@@ -24,7 +24,7 @@ Example:
 /hash/hello
 ```
 
-response:
+Response:
 
 ```json
 {
@@ -37,13 +37,13 @@ response:
 
 Get the IP from the provided host.
 
-example:
+Example:
 
 ```host
 /dns/google.com
 ```
 
-response:
+Response:
 
 ```json
 {

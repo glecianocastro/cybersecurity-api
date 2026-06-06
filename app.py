@@ -10,7 +10,7 @@ app = Flask(__name__)
 def home():
     return {
         "project": "Cybersecurity API",
-        "version": "1.1",
+        "version": "1.2",
         "status": "online"
     }
 @app.route("/password")
