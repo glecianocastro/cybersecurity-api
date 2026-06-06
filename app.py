@@ -8,7 +8,8 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return {
-        "project": "Cybersecurity APi",
+        "project": "Cybersecurity API",
+        "version": "1.1",
         "status": "online"
     }
 @app.route("/password")
@@ -32,7 +33,8 @@ def password():
 @app.route("/health")
 def health():
     return {
-        "status": "healthy"
+        "status": "healthy",
+        "api": "running"
     }
 
 @app.route("/hash/<text>")
