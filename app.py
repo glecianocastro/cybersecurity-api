@@ -1,6 +1,7 @@
 from flask import Flask
 import random
 import string
+import hashlib
 
 app = Flask(__name__)
 
@@ -33,5 +34,18 @@ def health():
     return {
         "status": "healthy"
     }
+
+@app.route("/hash/<text>")
+def generate_hash(text):
+
+    sha256_hash = hashlib.sha256(
+        text.encode()
+    ).hexdigest()
+
+    return {
+        "text": text,
+        "sha256": sha256_hash
+    }
+
 if __name__ == "__main__":
     app.run(debug=True)
