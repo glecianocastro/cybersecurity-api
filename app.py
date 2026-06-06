@@ -2,6 +2,7 @@ from flask import Flask
 import random
 import string
 import hashlib
+import socket
 
 app = Flask(__name__)
 
@@ -48,6 +49,21 @@ def generate_hash(text):
         "text": text,
         "sha256": sha256_hash
     }
+
+@app.route("/dns/<host>")
+def dns_lookup(host):
+    
+    try:
+        ip = socket.gethostbyname(host)
+
+        return {
+            "host": host,
+            "ip": ip
+        }
+    except Exception:
+        return {
+            "error": "Host not found"
+        }
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -33,10 +33,29 @@ response:
 }
 ```
 
+### GET /dns/<host>
+
+Get the IP from the provided host.
+
+example:
+
+```host
+/dns/google.com
+```
+
+response:
+
+```json
+{
+    "host": "google.com",
+    "ip": "142.250.x.x"
+}
+```
+
 ## Roadmap
 
 - [x] v1.0 Password Generator
 - [x] v1.1 SHA256 Hash Generator
-- [ ] v1.2 DNS Lookup
+- [x] v1.2 DNS Lookup
 - [ ] v1.3 Password Stregth Checker
 - [ ] v1.4 Port Scanner
