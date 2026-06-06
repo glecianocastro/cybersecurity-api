@@ -14,7 +14,7 @@ Returns API health status.
 
 Generates a random password.
 
-### GET/hash/<text>
+### GET /hash/<text>
 
 Generates a SHA256 hash from the provided text.
 
@@ -29,7 +29,7 @@ response:
 ```json
 {
     "text": "hello",
-    "sha256": "2cf24dba5fb0"..."
+    "sha256": "2cf24dba5fb0..."
 }
 ```
 
