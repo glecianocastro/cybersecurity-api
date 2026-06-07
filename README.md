@@ -72,10 +72,34 @@ Response:
 }
 ```
 
+## GET /scan/<host>
+
+Get the host provided and try to resolve the DNS
+
+Example:
+
+```host
+/scan/github.com
+```
+
+Response:
+
+```json
+{
+    "host": "github.com",
+    "ip": "4.228.31.150",
+    "open_ports": [
+        22,
+        443
+    ]
+}
+```
+
 ## Roadmap
 
 - [x] v1.0 Password Generator
 - [x] v1.1 SHA256 Hash Generator
 - [x] v1.2 DNS Lookup
 - [x] v1.3 Password Strength Checker
-- [ ] v1.4 Port Scanner
+- [x] v1.4 Port Scanner
+- [ ] v2.0 Security Tollkit API

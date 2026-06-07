@@ -10,10 +10,18 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return {
-        "project": "Cybersecurity API",
-        "version": "1.3",
-        "status": "online"
-    }
+    "project": "Cybersecurity API",
+    "version": "1.4",
+    "status": "online",
+    "endpoints": [
+        "/health",
+        "/password",
+        "/hash/<text>",
+        "/dns/<host>",
+        "/password-strength/<password>",
+        "/scan/<host>"
+  ]
+}
 @app.route("/password")
 def password():
 
@@ -94,5 +102,37 @@ def password_strength(password):
         "strength": strength,
         "score": score
     }
+
+@app.route("/scan/<host>")
+def port_scan(host):
+    ports = [21, 22, 25, 53, 80, 110, 143, 443, 3389]
+    open_ports = []
+    try:
+
+        ip = socket.gethostbyname(host)
+
+        for port in ports:
+            sock = socket.socket(
+                socket.AF_INET,
+                socket.SOCK_STREAM
+            )
+            sock.settimeout(2)
+            result = sock.connect_ex(
+                (ip, port)
+            )
+            if result == 0:
+                open_ports.append(port)
+            sock.close()
+        return {
+                "host": host,
+                "ip": ip,
+                "open_ports": open_ports
+            }
+    except Exception as e:
+        return {
+            "error": str(e)
+        }
+
+
 if __name__ == "__main__":
     app.run(debug=True)
