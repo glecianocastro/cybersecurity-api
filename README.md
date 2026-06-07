@@ -52,10 +52,30 @@ Response:
 }
 ```
 
+### GET /password-strength/<password>
+
+Get the password provided and check
+
+Example:
+
+```password
+/password-strength/admin
+```
+
+Response:
+
+```json
+{
+    "password": "admin",
+    "score": "1",
+    "strenght": "Weak"
+}
+```
+
 ## Roadmap
 
 - [x] v1.0 Password Generator
 - [x] v1.1 SHA256 Hash Generator
 - [x] v1.2 DNS Lookup
-- [ ] v1.3 Password Stregth Checker
+- [x] v1.3 Password Strength Checker
 - [ ] v1.4 Port Scanner
