@@ -4,24 +4,26 @@ import string
 import hashlib
 import socket
 import re
+from datetime import datetime
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     return {
-    "project": "Cybersecurity API",
-    "version": "1.4",
-    "status": "online",
-    "endpoints": [
-        "/health",
-        "/password",
-        "/hash/<text>",
-        "/dns/<host>",
-        "/password-strength/<password>",
-        "/scan/<host>"
-  ]
-}
+        "timestamp": datetime.now().isoformat(),
+        "project": "Security Toolkit API",
+        "version": "2.0",
+        "status": "online",
+        "endpoints": {
+            "health": "/health",
+            "password_generator": "/password",
+            "hash_generator": "/hash/<text>",
+            "dns_lookup": "/dns/<host>",
+            "password_strength": "/password-strength/<password>",
+            "port_scanner": "/scan/<host>"
+        }
+    }
 @app.route("/password")
 def password():
 
@@ -44,7 +46,17 @@ def password():
 def health():
     return {
         "status": "healthy",
-        "api": "running"
+        "version": "2.0",
+        "service": "Security Tollkit API"
+    }
+
+@app.route("/info")
+def info():
+    return {
+        "author": "Gleciano Castro",
+        "language": "Python",
+        "framework": "Flask",
+        "version": "2.0"
     }
 
 @app.route("/hash/<text>")

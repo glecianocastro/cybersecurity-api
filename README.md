@@ -1,7 +1,16 @@
-# cybersecurity-api
-Simple Cybersecurity API built with Flask.
+# Security Toolkit API
+A cybersecurity-focused API built with Python and Flask.
+
+## Features
+
+- Password Generator
+- SHA256 Hash Generator
+- DNS Lookup
+- Password Strength Checker
+- Port Scanner
 
 ## Endpoints
+
 ### GET /
 
 Returns API information.
@@ -102,4 +111,4 @@ Response:
 - [x] v1.2 DNS Lookup
 - [x] v1.3 Password Strength Checker
 - [x] v1.4 Port Scanner
-- [ ] v2.0 Security Tollkit API
+- [x] v2.0 Security Tollkit API
