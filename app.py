@@ -13,7 +13,7 @@ def home():
     return {
         "timestamp": datetime.now().isoformat(),
         "project": "Security Toolkit API",
-        "version": "2.0",
+        "version": "2.1",
         "status": "online",
         "endpoints": {
             "health": "/health",
@@ -46,7 +46,7 @@ def password():
 def health():
     return {
         "status": "healthy",
-        "version": "2.0",
+        "version": "2.1",
         "service": "Security Tollkit API"
     }
 
@@ -56,19 +56,33 @@ def info():
         "author": "Gleciano Castro",
         "language": "Python",
         "framework": "Flask",
-        "version": "2.0"
+        "version": "2.1"
     }
 
-@app.route("/hash/<text>")
-def generate_hash(text):
+@app.route("/hash/<algorithm>/<text>")
+def generate_hash(algorithm, text):
 
-    sha256_hash = hashlib.sha256(
+    algorithms = {
+        "md5": hashlib.md5,
+        "sha1": hashlib.sha1,
+        "sha256": hashlib.sha256,
+        "sha512": hashlib.sha512
+    }
+
+    if algorithm not in algorithms:
+
+        return {
+            "error": "Unsupported algorithm"
+        }
+
+    hash_value = algorithms[algorithm](
         text.encode()
     ).hexdigest()
 
     return {
+        "algorithm": algorithm,
         "text": text,
-        "sha256": sha256_hash
+        "hash": hash_value
     }
 
 @app.route("/dns/<host>")

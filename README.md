@@ -104,6 +104,15 @@ Response:
 }
 ```
 
+- Multi Hash Generator
+
+### GET /hash/<algorithm>/<text>
+```Supported algorithm
+md5
+sha1
+sha256
+sha512
+```
 ## Roadmap
 
 - [x] v1.0 Password Generator
@@ -112,3 +121,4 @@ Response:
 - [x] v1.3 Password Strength Checker
 - [x] v1.4 Port Scanner
 - [x] v2.0 Security Tollkit API
+- [x] v2.1 Multi Hash Generator
