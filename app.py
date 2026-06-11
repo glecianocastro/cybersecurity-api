@@ -14,7 +14,7 @@ def home():
     return {
         "timestamp": datetime.now().isoformat(),
         "project": "Security Toolkit API",
-        "version": "2.1",
+        "version": "2.2",
         "status": "online",
         "endpoints": {
             "health": "/health",
@@ -47,7 +47,7 @@ def password():
 def health():
     return {
         "status": "healthy",
-        "version": "2.1",
+        "version": "2.2",
         "service": "Security Tollkit API"
     }
 
@@ -57,7 +57,7 @@ def info():
         "author": "Gleciano Castro",
         "language": "Python",
         "framework": "Flask",
-        "version": "2.1"
+        "version": "2.2"
     }
 
 @app.route("/hash/<algorithm>/<text>")
@@ -170,9 +170,28 @@ def headers_lookup(host):
             timeout=5
         )
 
+        security_headers = {
+            "strict-transport-security":
+                response.headers.get(
+                    "Strict-Transport-Security"
+                ),
+            "x-frame-options":
+                response.headers.get(
+                    "X-Frame-Options"
+                ),
+            "content-security-policy":
+                response.headers.get(
+                    "Content-Security-Policy"
+                ),
+            "server":
+                response.headers.get(
+                    "Server"
+                )
+        }
+
         return {
             "host": host,
-            "headers": dict(response.headers)
+            "security_headers": security_headers
         }
     
     except Exception as e:

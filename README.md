@@ -113,6 +113,11 @@ sha1
 sha256
 sha512
 ```
+
+- Header Analyzer
+
+### GET /headers/<host>
+
 ## Roadmap
 
 - [x] v1.0 Password Generator
@@ -122,3 +127,4 @@ sha512
 - [x] v1.4 Port Scanner
 - [x] v2.0 Security Tollkit API
 - [x] v2.1 Multi Hash Generator
+- [x] v2.2 HTTP Header Analyzer
