@@ -5,6 +5,7 @@ import hashlib
 import socket
 import re
 from datetime import datetime
+import requests
 
 app = Flask(__name__)
 
@@ -159,6 +160,26 @@ def port_scan(host):
             "error": str(e)
         }
 
+@app.route("/headers/<host>")
+def headers_lookup(host):
+
+    try:
+
+        response = requests.get(
+            f"https://{host}",
+            timeout=5
+        )
+
+        return {
+            "host": host,
+            "headers": dict(response.headers)
+        }
+    
+    except Exception as e:
+        
+        return {
+            "error": str(e)
+        }
 
 if __name__ == "__main__":
     app.run(debug=True)
