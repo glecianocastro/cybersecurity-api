@@ -6,6 +6,7 @@ import socket
 import re
 from datetime import datetime
 import requests
+import whois
 
 app = Flask(__name__)
 
@@ -14,7 +15,7 @@ def home():
     return {
         "timestamp": datetime.now().isoformat(),
         "project": "Security Toolkit API",
-        "version": "2.2",
+        "version": "2.3",
         "status": "online",
         "endpoints": {
             "health": "/health",
@@ -23,7 +24,8 @@ def home():
             "dns_lookup": "/dns/<host>",
             "password_strength": "/password-strength/<password>",
             "port_scanner": "/scan/<host>",
-            "header_analyzer": "/headers/<host>"
+            "header_analyzer": "/headers/<host>",
+            "whois_lookup": "/whois/<domain>"
         }
     }
 @app.route("/password")
@@ -48,7 +50,7 @@ def password():
 def health():
     return {
         "status": "healthy",
-        "version": "2.2",
+        "version": "2.3",
         "service": "Security Tollkit API"
     }
 
@@ -58,7 +60,7 @@ def info():
         "author": "Gleciano Castro",
         "language": "Python",
         "framework": "Flask",
-        "version": "2.2"
+        "version": "2.3"
     }
 
 @app.route("/hash/<algorithm>/<text>")
@@ -200,6 +202,26 @@ def headers_lookup(host):
         return {
             "error": str(e)
         }
+    
+@app.route("/whois/<domain>")
+def whois_lookup(domain):
+
+        try:
+
+            info = whois.whois(domain)
+
+            return {
+                "domain": domain,
+                "registrar": str(info.registrar),
+                "creation_date": str(info.creation_date),
+                "expiration_date": str(info.expiration_date)
+            }
+        
+        except Exception as e:
+
+            return {
+                "error": str(e)
+            }
 
 if __name__ == "__main__":
     app.run(debug=True)

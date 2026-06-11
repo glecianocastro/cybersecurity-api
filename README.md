@@ -128,3 +128,4 @@ sha512
 - [x] v2.0 Security Tollkit API
 - [x] v2.1 Multi Hash Generator
 - [x] v2.2 HTTP Header Analyzer
+- [x] v2.3 WHOIS Lookup
