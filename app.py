@@ -22,7 +22,8 @@ def home():
             "hash_generator": "/hash/<text>",
             "dns_lookup": "/dns/<host>",
             "password_strength": "/password-strength/<password>",
-            "port_scanner": "/scan/<host>"
+            "port_scanner": "/scan/<host>",
+            "header_analyzer": "/headers/<host>"
         }
     }
 @app.route("/password")
