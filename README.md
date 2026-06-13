@@ -118,6 +118,8 @@ sha512
 
 ### GET /headers/<host>
 
+### GET /whois/<domain>
+
 ## Roadmap
 
 - [x] v1.0 Password Generator
