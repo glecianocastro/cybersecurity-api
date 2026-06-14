@@ -8,6 +8,9 @@ A cybersecurity-focused API built with Python and Flask.
 - DNS Lookup
 - Password Strength Checker
 - Port Scanner
+- Multi Hash Generator
+- Header Analyzer
+- Who is the domain
 
 ## Endpoints
 
@@ -117,6 +120,8 @@ sha512
 - Header Analyzer
 
 ### GET /headers/<host>
+
+- Who is the domain
 
 ### GET /whois/<domain>
 
