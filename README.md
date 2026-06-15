@@ -1,5 +1,6 @@
 # Security Toolkit API
 A cybersecurity-focused API built with Python and Flask.
+Current Version: v2.3
 
 ## Features
 
@@ -10,7 +11,33 @@ A cybersecurity-focused API built with Python and Flask.
 - Port Scanner
 - Multi Hash Generator
 - Header Analyzer
-- Who is the domain
+- WHOIS Lookup
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/glecianocastro/security-toolkit-api.git
+```
+
+Navigate to the project:
+
+```bash
+cd security-toolkit-api
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
+python app.py
+```
 
 ## Endpoints
 
@@ -26,7 +53,7 @@ Returns API health status.
 
 Generates a random password.
 
-### GET /hash/<text>
+### GET /hash/<algorithm>/<text>
 
 Generates a SHA256 hash from the provided text.
 
@@ -80,7 +107,7 @@ Response:
 {
     "password": "admin",
     "score": "1",
-    "strenght": "Weak"
+    "strength": "Weak"
 }
 ```
 
@@ -132,7 +159,7 @@ sha512
 - [x] v1.2 DNS Lookup
 - [x] v1.3 Password Strength Checker
 - [x] v1.4 Port Scanner
-- [x] v2.0 Security Tollkit API
+- [x] v2.0 Security Toolkit API
 - [x] v2.1 Multi Hash Generator
 - [x] v2.2 HTTP Header Analyzer
 - [x] v2.3 WHOIS Lookup
