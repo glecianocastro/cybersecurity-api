@@ -12,6 +12,7 @@ Current Version: v2.3
 - Multi Hash Generator
 - Header Analyzer
 - WHOIS Lookup
+- SSL Certificate Checker
 
 ## Installation
 
@@ -152,6 +153,10 @@ sha512
 
 ### GET /whois/<domain>
 
+### GET /ssl/<host>
+
+Returns SSL certificate information.
+
 ## Roadmap
 
 - [x] v1.0 Password Generator
@@ -163,3 +168,4 @@ sha512
 - [x] v2.1 Multi Hash Generator
 - [x] v2.2 HTTP Header Analyzer
 - [x] v2.3 WHOIS Lookup
+- [x] v2.4 SSL Certificate Checker

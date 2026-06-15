@@ -7,6 +7,7 @@ import re
 from datetime import datetime
 import requests
 import whois
+import ssl
 
 app = Flask(__name__)
 
@@ -222,6 +223,49 @@ def whois_lookup(domain):
             return {
                 "error": str(e)
             }
+
+@app.route("/ssl/<host>")
+def ssl_info(host):
+
+    try:
+
+        context = ssl.create_default_context()
+
+        with context.wrap_socket(
+            socket.socket(),
+            server_hostname=host
+        ) as sock:
+            
+            sock.settimeout(5)
+            sock.connect((host, 443))
+            cert = sock.getpeercert()
+            issuer = dict(
+                x[0]
+                for x in cert["issuer"]
+            )
+            subject = dict(
+                x[0]
+                for x in cert["subject"]
+            )
+            return {
+                "host": host,
+                "issuer": issuer.get(
+                    "organizationName",
+                    "Unknown"
+                ),
+                "subject": subject.get(
+                    "commonName",
+                    "Unknown"
+                ),
+                "valid_from": cert["notBefore"],
+                "valid_until": cert["notAfter"]
+            }
+
+    except Exception as e:
+
+        return {
+            "error": str(e)
+        }
 
 if __name__ == "__main__":
     app.run(debug=True)
