@@ -149,9 +149,9 @@ sha512
 
 ### GET /headers/<host>
 
-- Who is the domain
-
 ### GET /whois/<domain>
+
+- Who is the domain
 
 ### GET /ssl/<host>
 
